@@ -1,26 +1,15 @@
-const express = require('express');
-const Book = require('../models/Book');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-// Lấy danh sách sách
-router.get('/', async (req, res) => {
-    try {
-        const books = await Book.find();
-        res.json(books);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
+const {getAllBooks, getBookById, createBook, updateBook, deleteBook,getBookByCategory ,getCountBook ,getCountBookByCategory} = require('../services/Bookservice')
 
-// Thêm sách mới
-router.post('/', async (req, res) => {
-    try {
-        const newBook = new Book(req.body);
-        await newBook.save();
-        res.status(201).json(newBook);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-});
+router.get('/', getAllBooks)
+router.get('/count',getCountBook)
+router.get('/countByCategory/:category',getCountBookByCategory)
+router.get('/categories/:category',getBookByCategory)
+router.get('/:id', getBookById)
+router.post('/', createBook) // post
+router.patch('/:id', updateBook)
+router.delete('/:id', deleteBook)
 
-module.exports = router;
+module.exports = router
