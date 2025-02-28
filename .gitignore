@@ -1,0 +1,23 @@
+# Loại bỏ thư mục node_modules (thư viện cài đặt)
+node_modules/
+
+# Loại bỏ file môi trường chứa thông tin nhạy cảm
+.env
+
+# Loại bỏ thư mục chứa log và cache
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+debug.log*
+
+# Loại bỏ thư mục build, temp
+dist/
+build/
+tmp/
+.cache/
+
+# Loại bỏ file hệ thống của macOS, Windows
+.DS_Store
+Thumbs.db
